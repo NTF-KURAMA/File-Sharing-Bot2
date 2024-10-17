@@ -89,7 +89,7 @@ async def start_command(client: Client, message: Message):
                 pass
 
 
-        k = await client.send_message(chat_id = message.from_user.id, text=f"<b>❗️ <u>IMPORTANT</u> ❗️</b>\n\nThis Video / File Will Be Deleted In {file_auto_delete} (Due To Copyright Issues).\n\n📌 Please Forward This Video / File To Somewhere Else And Start Downloading There.")
+        k = await client.send_message(chat_id = message.from_user.id, text=f"<b> Baka! Files will be deleted After 10 minutes. Save them to the Saved Message now! </b>")
 
         # Schedule the file deletion
         asyncio.create_task(delete_files(madflix_msgs, client, k))
@@ -97,7 +97,7 @@ async def start_command(client: Client, message: Message):
         # for madflix_msg in madflix_msgs: 
             # try:
                 # await madflix_msg.delete()
-                # await k.edit_text("Your Video / File Is Successfully Deleted ✅") 
+                # await k.edit_text("<b> Your Video / File Is Successfully Deleted ✅ </b>") 
             # except:    
                 # pass 
 
@@ -184,7 +184,7 @@ async def send_text(client: Bot, message: Message):
         deleted = 0
         unsuccessful = 0
         
-        pls_wait = await message.reply("<i>Broadcasting Message.. This will Take Some Time</i>")
+        pls_wait = await message.reply("<b>Broadcasting Message.. This will Take Some Time</b>")
         for chat_id in query:
             try:
                 await broadcast_msg.copy(chat_id)
@@ -215,7 +215,7 @@ async def send_text(client: Bot, message: Message):
         return await pls_wait.edit(status)
 
     else:
-        msg = await message.reply(f"Use This Command As A Reply To Any Telegram Message With Out Any Spaces.")
+        msg = await message.reply(f"<b>Use This Command As A Reply To Any Telegram Message With Out Any Spaces.</b>")
         await asyncio.sleep(8)
         await msg.delete()
 
@@ -233,7 +233,7 @@ async def delete_files(messages, client, k):
         except Exception as e:
             print(f"The attempt to delete the media {msg.id} was unsuccessful: {e}")
     # await client.send_message(messages[0].chat.id, "Your Video / File Is Successfully Deleted ✅")
-    await k.edit_text("Your Video / File Is Successfully Deleted ✅")
+    await k.edit_text("<b>Your Video / File Is Successfully Deleted ✅</b>")
 
 
 
